@@ -4,7 +4,7 @@ public class PriceCalculator {
     for (Decimal p : prices) {
       if (p != null) { sum += p; }
     }
-    if (sum > 1000) { sum = sum * 0.9; }
+    if (sum > 1000) { sum = sum * 0.85; }
     system.debug('>>>>Total Sum '+ sum);
     return sum;
   }
