@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>BankAccountSuspensionAction</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <description>Access to confirmed account suspension and reactivation. Record sharing and authorization are required separately.</description>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Bank_Account__c.Account_Number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Bank_Account__c.Is_Active__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <label>Bank Account Status Access</label>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Bank_Account__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+</PermissionSet>

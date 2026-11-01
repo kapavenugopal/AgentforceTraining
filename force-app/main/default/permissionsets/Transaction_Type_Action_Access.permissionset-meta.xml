@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>TransactionTypeAction</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <description>Read-only access to the Get Transaction Type Apex action. Record sharing must be granted separately.</description>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Transaction__c.Transaction_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <label>Transaction Type Action Access</label>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Transaction__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+</PermissionSet>

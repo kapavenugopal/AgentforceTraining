@@ -1,0 +1,96 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Validate Bank Account Summary",
+			"type": "shell",
+			"command": "& 'C:\\Program Files\\sf\\bin\\sf.cmd' project deploy start --dry-run --source-dir force-app/main/default/classes/BankAccountSummaryAction.cls --source-dir force-app/main/default/classes/BankAccountSummaryActionTest.cls --source-dir force-app/main/default/classes/BankAccountSummaryFlowTest.cls --source-dir force-app/main/default/flows/Fetch_Bank_Account_Summary.flow-meta.xml --source-dir force-app/main/default/permissionsets/Bank_Account_Summary_Access.permissionset-meta.xml --test-level RunSpecifiedTests --tests BankAccountSummaryActionTest --tests BankAccountSummaryFlowTest --api-version 68.0 --wait 10 --json",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Deploy Bank Account Summary",
+			"type": "shell",
+			"command": "& 'C:\\Program Files\\sf\\bin\\sf.cmd' project deploy start --source-dir force-app/main/default/classes/BankAccountSummaryAction.cls --source-dir force-app/main/default/classes/BankAccountSummaryActionTest.cls --source-dir force-app/main/default/classes/BankAccountSummaryFlowTest.cls --source-dir force-app/main/default/flows/Fetch_Bank_Account_Summary.flow-meta.xml --source-dir force-app/main/default/permissionsets/Bank_Account_Summary_Access.permissionset-meta.xml --test-level RunSpecifiedTests --tests BankAccountSummaryActionTest --tests BankAccountSummaryFlowTest --api-version 68.0 --wait 10 --json",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Validate Transaction Type Action",
+			"type": "shell",
+			"command": "& 'C:\\Program Files\\sf\\bin\\sf.cmd' project deploy start --dry-run --source-dir force-app/main/default/classes/TransactionTypeAction.cls --source-dir force-app/main/default/classes/TransactionTypeActionTest.cls --source-dir force-app/main/default/permissionsets/Transaction_Type_Action_Access.permissionset-meta.xml --test-level RunSpecifiedTests --tests TransactionTypeActionTest --api-version 68.0 --wait 10 --json",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Deploy Transaction Type Action",
+			"type": "shell",
+			"command": "& 'C:\\Program Files\\sf\\bin\\sf.cmd' project deploy start --source-dir force-app/main/default/classes/TransactionTypeAction.cls --source-dir force-app/main/default/classes/TransactionTypeActionTest.cls --source-dir force-app/main/default/permissionsets/Transaction_Type_Action_Access.permissionset-meta.xml --test-level RunSpecifiedTests --tests TransactionTypeActionTest --api-version 68.0 --wait 10 --json",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Validate Bank Account Transactions",
+			"type": "shell",
+			"command": "& 'C:\\Program Files\\sf\\bin\\sf.cmd' project deploy start --dry-run --source-dir force-app/main/default/classes/BankAccountTransactionsAction.cls --source-dir force-app/main/default/classes/BankAccountTransactionsActionTest.cls --source-dir force-app/main/default/permissionsets/Bank_Account_Transactions_Access.permissionset-meta.xml --test-level RunSpecifiedTests --tests BankAccountTransactionsActionTest --api-version 68.0 --wait 10 --json",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Deploy Bank Account Transactions",
+			"type": "shell",
+			"command": "& 'C:\\Program Files\\sf\\bin\\sf.cmd' project deploy start --source-dir force-app/main/default/classes/BankAccountTransactionsAction.cls --source-dir force-app/main/default/classes/BankAccountTransactionsActionTest.cls --source-dir force-app/main/default/permissionsets/Bank_Account_Transactions_Access.permissionset-meta.xml --test-level RunSpecifiedTests --tests BankAccountTransactionsActionTest --api-version 68.0 --wait 10 --json",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Validate Bank Account Write Actions",
+			"type": "shell",
+			"command": "& 'C:\\Program Files\\sf\\bin\\sf.cmd' project deploy start --dry-run --source-dir force-app/main/default/classes/CreateBankAccountAction.cls --source-dir force-app/main/default/classes/AddBankAccountTransactionAction.cls --source-dir force-app/main/default/classes/BankAccountWriteActionsTest.cls --source-dir force-app/main/default/classes/TransactionTriggerHandler.cls --test-level RunSpecifiedTests --tests BankAccountWriteActionsTest --api-version 68.0 --wait 10 --json",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Deploy Bank Account Write Actions",
+			"type": "shell",
+			"command": "& 'C:\\Program Files\\sf\\bin\\sf.cmd' project deploy start --source-dir force-app/main/default/classes/CreateBankAccountAction.cls --source-dir force-app/main/default/classes/AddBankAccountTransactionAction.cls --source-dir force-app/main/default/classes/BankAccountWriteActionsTest.cls --source-dir force-app/main/default/classes/TransactionTriggerHandler.cls --source-dir force-app/main/default/permissionsets/Bank_Account_Write_Actions_Access.permissionset-meta.xml --test-level RunSpecifiedTests --tests BankAccountWriteActionsTest --tests BankAccountSummaryActionTest --tests BankAccountSummaryFlowTest --tests TransactionTypeActionTest --tests BankAccountTransactionsActionTest --api-version 68.0 --wait 10 --json",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Validate Bank Account Suspension",
+			"type": "shell",
+			"command": "& 'C:\\Program Files\\sf\\bin\\sf.cmd' project deploy start --dry-run --source-dir force-app/main/default/classes/BankAccountSuspiciousActivityAction.cls --source-dir force-app/main/default/classes/BankAccountSuspensionAction.cls --source-dir force-app/main/default/classes/BankAccountSuspensionActionTest.cls --source-dir force-app/main/default/permissionsets/Bank_Activity_Check_Access.permissionset-meta.xml --source-dir force-app/main/default/permissionsets/Bank_Account_Status_Access.permissionset-meta.xml --test-level RunSpecifiedTests --tests BankAccountSuspensionActionTest --api-version 68.0 --wait 10 --json",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Deploy Bank Account Suspension",
+			"type": "shell",
+			"command": "& 'C:\\Program Files\\sf\\bin\\sf.cmd' project deploy start --source-dir force-app/main/default/classes/BankAccountSuspiciousActivityAction.cls --source-dir force-app/main/default/classes/BankAccountSuspensionAction.cls --source-dir force-app/main/default/classes/BankAccountSuspensionActionTest.cls --source-dir force-app/main/default/permissionsets/Bank_Activity_Check_Access.permissionset-meta.xml --source-dir force-app/main/default/permissionsets/Bank_Account_Status_Access.permissionset-meta.xml --test-level RunSpecifiedTests --tests BankAccountSuspensionActionTest --api-version 68.0 --wait 10 --json",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Validate Currency Conversion",
+			"type": "shell",
+			"command": "& 'C:\\Program Files\\sf\\bin\\sf.cmd' project deploy start --dry-run --source-dir force-app/main/default/classes/CurrencyConversionAction.cls --source-dir force-app/main/default/classes/CurrencyConversionActionTest.cls --test-level RunSpecifiedTests --tests CurrencyConversionActionTest --api-version 68.0 --wait 10 --json",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Validate Country Details",
+			"type": "shell",
+			"command": "& 'C:\\Program Files\\sf\\bin\\sf.cmd' project deploy start --dry-run --source-dir force-app/main/default/classes/CountryDetailsAction.cls --source-dir force-app/main/default/classes/CountryDetailsActionTest.cls --test-level RunSpecifiedTests --tests CountryDetailsActionTest --api-version 68.0 --wait 10 --json",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		}
+	]
+}

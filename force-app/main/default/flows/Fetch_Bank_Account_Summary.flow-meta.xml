@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Build_Summary</name>
+        <label>Build Account Summary</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>BankAccountSummaryAction</actionName>
+        <actionType>apex</actionType>
+        <faultConnector>
+            <targetReference>Set_Unavailable_Message</targetReference>
+        </faultConnector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>bankAccountId</name>
+            <value>
+                <elementReference>Find_Bank_Account.Id</elementReference>
+            </value>
+        </inputParameters>
+        <outputParameters>
+            <assignToReference>accountSummary</assignToReference>
+            <name>accountSummary</name>
+        </outputParameters>
+    </actionCalls>
+    <apiVersion>68.0</apiVersion>
+    <assignments>
+        <name>Set_Not_Found_Message</name>
+        <label>Set No Matching Account Message</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>accountSummary</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>No matching bank account found for the supplied details.</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Set_Unavailable_Message</name>
+        <label>Set Safe Failure Message</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>accountSummary</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Unable to retrieve the account summary.</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Set_Invalid_Input_Message</name>
+        <label>Set Missing Input Message</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>accountSummary</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Please provide an account number and date of birth.</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>Validate_Inputs</name>
+        <label>Validate Inputs</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Set_Invalid_Input_Message</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Missing Inputs</defaultConnectorLabel>
+        <rules>
+            <name>Inputs_Present</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Has_Account_Number</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>dateOfBirth</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Find_Bank_Account</targetReference>
+            </connector>
+            <label>Both Inputs Present</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Account_Found</name>
+        <label>Account Found</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Set_Not_Found_Message</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Match</defaultConnectorLabel>
+        <rules>
+            <name>Matched</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Find_Bank_Account.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Build_Summary</targetReference>
+            </connector>
+            <label>Matched Account</label>
+        </rules>
+    </decisions>
+    <description>Match account number and date of birth, then return the balance and five newest visible transactions as plain text.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Has_Account_Number</name>
+        <dataType>Boolean</dataType>
+        <expression>NOT(ISBLANK(TRIM({!accountNumber})))</expression>
+    </formulas>
+    <formulas>
+        <name>Trimmed_Account_Number</name>
+        <dataType>String</dataType>
+        <expression>TRIM({!accountNumber})</expression>
+    </formulas>
+    <interviewLabel>Fetch Bank Account Summary {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Fetch Bank Account Summary</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Find_Bank_Account</name>
+        <label>Find Bank Account By Number And Birth Date</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Account_Found</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Set_Unavailable_Message</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account_Number__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Trimmed_Account_Number</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Date_of_Birth__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>dateOfBirth</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Bank_Account__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Validate_Inputs</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Required bank account number, for example ACC-10045.</description>
+        <name>accountNumber</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Required date of birth stored on the bank account. Supply a Date, not free-form text.</description>
+        <name>dateOfBirth</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Plain-text account, balance and up to five newest transactions, or a safe failure message.</description>
+        <name>accountSummary</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>
