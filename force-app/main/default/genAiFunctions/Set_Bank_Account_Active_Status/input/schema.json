@@ -1,0 +1,28 @@
+{
+  "required" : [ "accountNumber", "isActive", "userConfirmed" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "accountNumber" : {
+      "title" : "Account Number",
+      "description" : "Account number",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "isActive" : {
+      "title" : "Is Active",
+      "description" : "False temporarily suspends the account; true reactivates it.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "userConfirmed" : {
+      "title" : "User Confirmed",
+      "description" : "Set true only after the user explicitly confirms this account status change.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
