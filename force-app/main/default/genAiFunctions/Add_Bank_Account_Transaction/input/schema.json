@@ -1,0 +1,42 @@
+{
+  "required" : [ "accountNumber", "amount", "transactionDate", "transactionType" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "accountNumber" : {
+      "title" : "Account Number",
+      "description" : "Account number for which transaction should be created",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "amount" : {
+      "title" : "Amount",
+      "description" : "Positive amount with at most two decimal places.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "description" : {
+      "title" : "Description",
+      "description" : "Description value",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "transactionDate" : {
+      "title" : "Transaction Date",
+      "description" : "Transaction Date",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "transactionType" : {
+      "title" : "Transaction Type",
+      "description" : "Credit adds to balance; Debit subtracts from balance.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

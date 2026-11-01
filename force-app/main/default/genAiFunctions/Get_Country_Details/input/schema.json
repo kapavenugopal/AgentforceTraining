@@ -1,0 +1,14 @@
+{
+  "required" : [ "countryName" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "countryName" : {
+      "title" : "Country Name",
+      "description" : "Country Name for which the details needs to be fetched",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

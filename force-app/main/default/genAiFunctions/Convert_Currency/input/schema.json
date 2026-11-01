@@ -1,0 +1,28 @@
+{
+  "required" : [ "amount", "fromCurrency", "toCurrency" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "amount" : {
+      "title" : "Amount",
+      "description" : "Amount entered by the user for currency conversion",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "fromCurrency" : {
+      "title" : "From Currency",
+      "description" : "Source Currency",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "toCurrency" : {
+      "title" : "To Currency",
+      "description" : "Currency values to be converted to",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
