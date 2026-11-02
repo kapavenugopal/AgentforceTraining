@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <description>This agent is to fetch all the Country details if user passes the country name, it fetches all the country details through API call.</description>
+    <developerName>Fetch_Details_by_Country_Name</developerName>
+    <genAiFunctions>
+        <functionName>Get_Country_Details</functionName>
+    </genAiFunctions>
+    <genAiPluginInstructions>
+        <description>1. Use &apos;Get Country Details&apos; action to fetch the details about country as shown in below example, but if user asks for any specific detail about country make sure you only share that info and not to share the complete info about the country.
+Ex :
+(Official Name: Russian Federation
+Capital: Moscow
+Country Code: RU (Alpha-2), RUS (Alpha-3)
+Population: 146,028,325
+Area: 17,098,242 square kilometers
+Region: Europe
+Subregion: Eastern Europe
+Timezones: UTC+03:00 to UTC+12:00 (multiple zones)
+Calling Code: +7
+Main Language: Russian
+Currency: RUB - Russian ruble (₽)
+2. Make sure to represent the fetched data in user readable format, so that user will have a clear idea by looking at the response.</description>
+        <developerName>instruction_0_1791790115323</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_0_1791790115323</masterLabel>
+    </genAiPluginInstructions>
+    <language>en_US</language>
+    <masterLabel>Fetch Details by Country Name</masterLabel>
+    <pluginType>Topic</pluginType>
+    <scope>This agent is to fetch all the Country details if user passes the country name, it fetches all the country details through API call.</scope>
+</GenAiPlugin>

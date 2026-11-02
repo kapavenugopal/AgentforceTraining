@@ -1,0 +1,28 @@
+{
+  "required" : [ "accountNumber", "fromDate", "toDate" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "accountNumber" : {
+      "title" : "Account Number",
+      "description" : "The bank account number, for example ACC-10045. Not a Salesforce record ID.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "fromDate" : {
+      "title" : "From Date",
+      "description" : "First transaction date to include, supplied as a Date in YYYY-MM-DD format.",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "toDate" : {
+      "title" : "To Date",
+      "description" : "Last transaction date to include, supplied as a Date in YYYY-MM-DD format.",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

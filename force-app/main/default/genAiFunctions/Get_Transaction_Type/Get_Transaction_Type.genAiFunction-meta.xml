@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Retrieve the Transaction Type for a Transaction record ID, enforcing user permissions and record sharing.</description>
+    <invocationTarget>TransactionTypeAction</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <masterLabel>Get Transaction Type</masterLabel>
+</GenAiFunction>
