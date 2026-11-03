@@ -4,12 +4,12 @@ public class PriceCalculator {
     for (Decimal p : prices) {
       if (p != null) { sum += p; }
     }
-    if (sum > 1000) { sum = sum * 0.9; }
-    //debug statements
-    system.debug('>>>>Total Sum '+ sum);
-    system.debug('Final Total Sum '+ sum);
-    
+    if (sum > 1000) { sum = sum * 0.95; }
+    system.debug('Total Sum: '+ sum);
+    system.debug('Total Sum1: '+ sum);
+
     return sum;
+
   }
   public static String run(List<Decimal> prices) {
     try { 
