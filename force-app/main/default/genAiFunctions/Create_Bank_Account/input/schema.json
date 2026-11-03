@@ -1,0 +1,28 @@
+{
+  "required" : [ "accountType", "bankAccountName", "dateOfBirth" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "accountType" : {
+      "title" : "Account Type",
+      "description" : "An active Bank Account Account Type picklist value.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "bankAccountName" : {
+      "title" : "Bank Account Name",
+      "description" : "Account Name",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "dateOfBirth" : {
+      "title" : "Date of Birth",
+      "description" : "Date of Birth value which is required for account creation",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

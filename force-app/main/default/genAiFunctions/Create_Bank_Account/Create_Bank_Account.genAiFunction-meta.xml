@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Create a Bank Account from name, account type, and date of birth with a zero opening balance. Requires explicit user confirmation.</description>
+    <invocationTarget>CreateBankAccountAction</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <masterLabel>Create Bank Account</masterLabel>
+</GenAiFunction>

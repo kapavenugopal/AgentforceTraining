@@ -17,12 +17,26 @@
                 <elementReference>Find_Bank_Account.Id</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>BankAccountSummaryAction</nameSegment>
         <outputParameters>
             <assignToReference>accountSummary</assignToReference>
             <name>accountSummary</name>
         </outputParameters>
     </actionCalls>
     <apiVersion>68.0</apiVersion>
+    <assignments>
+        <name>Set_Invalid_Input_Message</name>
+        <label>Set Missing Input Message</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>accountSummary</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Please provide an account number and date of birth.</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
     <assignments>
         <name>Set_Not_Found_Message</name>
         <label>Set No Matching Account Message</label>
@@ -49,19 +63,31 @@
             </value>
         </assignmentItems>
     </assignments>
-    <assignments>
-        <name>Set_Invalid_Input_Message</name>
-        <label>Set Missing Input Message</label>
+    <decisions>
+        <name>Account_Found</name>
+        <label>Account Found</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>accountSummary</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>Please provide an account number and date of birth.</stringValue>
-            </value>
-        </assignmentItems>
-    </assignments>
+        <defaultConnector>
+            <targetReference>Set_Not_Found_Message</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Match</defaultConnectorLabel>
+        <rules>
+            <name>Matched</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Find_Bank_Account.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Build_Summary</targetReference>
+            </connector>
+            <label>Matched Account</label>
+        </rules>
+    </decisions>
     <decisions>
         <name>Validate_Inputs</name>
         <label>Validate Inputs</label>
@@ -92,31 +118,6 @@
                 <targetReference>Find_Bank_Account</targetReference>
             </connector>
             <label>Both Inputs Present</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Account_Found</name>
-        <label>Account Found</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>Set_Not_Found_Message</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>No Match</defaultConnectorLabel>
-        <rules>
-            <name>Matched</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Find_Bank_Account.Id</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Build_Summary</targetReference>
-            </connector>
-            <label>Matched Account</label>
         </rules>
     </decisions>
     <description>Match account number and date of birth, then return the balance and five newest visible transactions as plain text.</description>
@@ -194,19 +195,19 @@
         <isOutput>false</isOutput>
     </variables>
     <variables>
-        <description>Required date of birth stored on the bank account. Supply a Date, not free-form text.</description>
-        <name>dateOfBirth</name>
-        <dataType>Date</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
         <description>Plain-text account, balance and up to five newest transactions, or a safe failure message.</description>
         <name>accountSummary</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>Required date of birth stored on the bank account. Supply a Date, not free-form text.</description>
+        <name>dateOfBirth</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
     </variables>
 </Flow>

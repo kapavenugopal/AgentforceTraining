@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Create a linked Credit or Debit transaction. The existing trigger updates the balance once. Requires explicit user confirmation.</description>
+    <invocationTarget>AddBankAccountTransactionAction</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <masterLabel>Add Bank Account Transaction</masterLabel>
+</GenAiFunction>

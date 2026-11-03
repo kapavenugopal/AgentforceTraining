@@ -1,0 +1,14 @@
+{
+  "required" : [ "transactionId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "transactionId" : {
+      "title" : "Transaction Record ID",
+      "description" : "The Salesforce record ID of the Transaction__c record to look up.",
+      "lightning:type" : "lightning__recordIdType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
