@@ -7,10 +7,9 @@ public class PriceCalculator {
     if (sum > 1000) { sum = sum * 0.8; }
     system.debug('>>>>Total Sum '+ sum);
     system.debug('Final Total Sum '+ sum);
-    
 
     return sum;
-    
+
   }
   public static String run(List<Decimal> prices) {
     try { 
