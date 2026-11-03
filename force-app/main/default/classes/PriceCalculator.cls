@@ -10,6 +10,7 @@ public class PriceCalculator {
     
 
     return sum;
+    
   }
   public static String run(List<Decimal> prices) {
     try { 
