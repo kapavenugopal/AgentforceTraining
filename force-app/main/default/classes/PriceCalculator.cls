@@ -5,8 +5,7 @@ public class PriceCalculator {
       if (p != null) { sum += p; }
     }
     if (sum > 1000) { sum = sum * 0.8; }
-    system.debug('>>>>Total Sum '+ sum);
-    system.debug('Final Total Sum '+ sum);
+    system.debug('Total Sum: '+ sum);
 
     return sum;
 
